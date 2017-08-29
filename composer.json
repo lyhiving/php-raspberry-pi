@@ -1,0 +1,19 @@
+{
+    "name": "spring-z/php-raspberry-pi",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "spring-z",
+            "email": "zhangwenchao001@gmail.com"
+        }
+    ],
+    "require": {
+
+    },
+
+    "autoload": {
+        "psr-4": {
+            "Pi\\": "src/"
+        }
+    }
+}

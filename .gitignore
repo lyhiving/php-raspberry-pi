@@ -1,0 +1,12 @@
+composer.phar
+/vendor/
+*.phar
+*.zip
+.DS_Store
+.swp
+.build
+composer.lock
+php-raspberry-pi.iml
+.idea
+wiringPi/cmake-build-debug
+wiringPi/CMakeLists.txt
