@@ -15,5 +15,87 @@ namespace Pi;
 class GPIO
 {
 
+    const    INPUT = 0;
+    const    OUTPUT = 1;
+    const    PWM_OUTPUT = 2;
+    const    GPIO_CLOCK = 3;
+    const    SOFT_PWM_OUTPUT = 4;
+    const    SOFT_TONE_OUTPUT = 5;
+    const    PWM_TONE_OUTPUT = 6;
+
+
+    const    LOW = 0;
+    const    HIGH = 1;
+
+
+    const    PUD_OFF = 0;
+    const    PUD_DOWN = 1;
+    const    PUD_UP = 2;
+
+    /**
+     * root user name
+     *
+     * @var string
+     */
+    protected $rootUser = "root";
+
+    /**
+     * root user password
+     *
+     * @var string
+     */
+    protected $rootPassword = "pass";
+
+    /**
+     * Setup type
+     *
+     * wiringPiSetup
+     * wiringPiSetupGpio
+     * wiringPiSetupPhys
+     * wiringPiSetupSys
+     *
+     * @var string
+     */
+    protected $initSetup = "wiringPiSetup";
+
+
+    /**
+     * set root
+     *
+     * @param $user
+     * @param $pass
+     */
+    public function setRoot($user, $pass)
+    {
+        $this->rootUser = $user;
+        $this->rootPassword = $pass;
+    }
+
+    /**
+     * set setup
+     * @param $setup
+     */
+    public function setSetup($setup)
+    {
+        $this->initSetup = $setup;
+    }
+
+
+    /**
+     *
+     * pinMode:
+     * Sets the mode of a pin to be input, output or PWM output
+     *
+     * @param $pin
+     * @param $mode
+     * @return bool
+     */
+    public function pinMode($pin, $mode)
+    {
+        $aryReturn = Shell::GPIO($this->rootUser, $this->rootPassword, $this->initSetup, $pin, $mode);
+
+        return $aryReturn == 1 ? true : false;
+    }
+
 
 }

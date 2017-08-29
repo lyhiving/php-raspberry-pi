@@ -37,7 +37,7 @@ int wiringPiSetupP(char *type) {
  *********************************************************************************
  */
 
-void pinModeP(char *charPin, char *charMode) {
+int pinModeP(char *charPin, char *charMode) {
 
     int pin = (int) strtol(charPin, NULL, 10);
     int mode = (int) strtol(charMode, NULL, 10);
@@ -45,9 +45,11 @@ void pinModeP(char *charPin, char *charMode) {
     if (mode == INPUT || mode == OUTPUT || mode == PWM_OUTPUT || mode == GPIO_CLOCK || mode == SOFT_PWM_OUTPUT ||
         mode == SOFT_TONE_OUTPUT || mode == PWM_TONE_OUTPUT) {
         pinMode(pin, mode);
+
+        return 1;
     }
 
-
+    return -1;
 }
 
 /*
@@ -56,14 +58,17 @@ void pinModeP(char *charPin, char *charMode) {
  *********************************************************************************
  */
 
-void digitalWriteP(char *charPin, char *charValue) {
+int digitalWriteP(char *charPin, char *charValue) {
 
     int pin = (int) strtol(charPin, NULL, 10);
     int value = (int) strtol(charValue, NULL, 10);
 
     if (value == HIGH || value == LOW) {
         digitalWrite(pin, value);
+        return 1;
     }
+
+    return -1;
 }
 
 /*
@@ -135,22 +140,26 @@ void pwmWriteP(char *charPin, char *charValue) {
  *********************************************************************************
  */
 
-void pullUpDnControlP(char *charPin, char *charPud) {
+int pullUpDnControlP(char *charPin, char *charPud) {
 
     int pin = (int) strtol(charPin, NULL, 10);
     int pud = (int) strtol(charPud, NULL, 10);
 
     if (pud == PUD_UP || pud == PUD_DOWN || pud == PUD_OFF) {
         pullUpDnControl(pin, pud);
+
+        return 1;
     }
 
+    return -1;
 }
 
 /*
  * print msg
  */
-void echo(char *msg, int type, char *error) {
-    printf("{\"status\": %s,\"result\": \"%d\",\"error\": \"%s\"}", msg, type, error);
+void echo(char *msg, int out, char *error) {
+    printf("{\"status\": %s,\"result\": %d,\"error\": \"%s\"}", msg, out, error);
+    printf(">");
 }
 
 
@@ -159,44 +168,73 @@ int main(int argc, char *argv[]) {
     printf("<");
 
     if (argc < 2) {
-        printf("Enter a valid integer.>");
+        echo("FAIL", -1, "Enter a valid integer.");
         return 0;
     }
 
     // Init wiringPi GPIO
-    wiringPiSetupP(argv[1]);
+    if (wiringPiSetupP(argv[1]) == -1) {
+        echo("FAIL", -1, "Init error");
+        return 0;
+    }
 
     // Judgement input String
     if (strcmp(argv[2], "pinMode") == 0) {
-        pinModeP(argv[3], argv[4]);
+
+        if (pinModeP(argv[3], argv[4]) == -1) {
+            echo("FAIL", -1, "No mode");
+        } else {
+            echo("OK", 1, "");
+        }
+
     }
 
     if (strcmp(argv[2], "digitalWrite") == 0) {
-        digitalWriteP(argv[3], argv[4]);
+
+        if (digitalWriteP(argv[3], argv[4]) == -1) {
+            echo("FAIL", -1, "No mode");
+        } else {
+            echo("OK", 1, "");
+        }
     }
 
     if (strcmp(argv[2], "digitalRead") == 0) {
-        digitalReadP(argv[3]);
+
+        int out = digitalReadP(argv[3]);
+
+        echo("OK", out, "");
     }
 
     if (strcmp(argv[2], "analogWrite") == 0) {
+
         analogWriteP(argv[3], argv[4]);
+        echo("OK", 1, "");
+
     }
 
     if (strcmp(argv[2], "analogRead") == 0) {
-        analogReadP(argv[3]);
+
+        int out = analogReadP(argv[3]);
+        echo("OK", out, "");
+
     }
 
 
     if (strcmp(argv[2], "pwmWrite") == 0) {
+
         pwmWriteP(argv[3], argv[4]);
+        echo("OK", 1, "");
+
     }
 
     if (strcmp(argv[2], "pullUpDnControl") == 0) {
-        pullUpDnControlP(argv[3], argv[4]);
-    }
 
-    printf(">");
+        if (pullUpDnControlP(argv[3], argv[4]) == -1) {
+            echo("FAIL", -1, "No mode");
+        } else {
+            echo("OK", 1, "");
+        }
+    }
 
     return 0;
 }

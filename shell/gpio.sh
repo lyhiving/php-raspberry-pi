@@ -4,12 +4,14 @@ sudo -A echo > /dev/null 2>&1
 
 if [ $? -ne 0 ]; then
     expect -c "
-        spawn -noecho sudo su  ;
-        expect ":" { send \"$1\r\" } ;
-        expect "@" { send \"../executable\r\" } ;
-        expect "@" { send \"exit\r\" } ;
+        spawn -noecho su $1 ;
+        expect ":" { send \"$2\r\" } ;
+        expect "*" { send \"./executable/Test $3 $4 $5\r\" } ;
+        expect "*" { send \"exit\r\" } ;
         expect eof
         "
 else
-    sudo echo 1;
+
+    sudo ./executable/Test;
+
 fi
