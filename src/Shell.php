@@ -32,7 +32,7 @@ class Shell
     {
         $path = dirname(dirname(__FILE__)) . "/shell/GPIO.sh";
 
-        $shell = shell_exec("/usr/bin/env bash " . "$path $user $pass $setup $pin $value");
+        $shell = shell_exec("/usr/bin/env bash " . "$path $user $pass $setup $intention $pin $value");
 
         $value = Util::getBetween($shell, "<", ">");
 

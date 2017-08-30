@@ -5,7 +5,7 @@
  * Date: 2017/8/29
  * Time: 22:19
  */
-require __DIR__ . '../vendor/autoload.php';
+require dirname(dirname(__FILE__)) . '/vendor/autoload.php';
 
 use \Pi\GPIO;
 
