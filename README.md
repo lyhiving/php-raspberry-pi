@@ -1,5 +1,7 @@
 # PHP Raspberry Pi 
 
+PHP www-data user run root command
+
 ### Installation
 
 To install simply:
