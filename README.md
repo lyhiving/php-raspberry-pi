@@ -61,7 +61,7 @@ example :
  +-----+-----+---------+------+---+---Pi 3---+---+------+---------+-----+-----+
 ```
 
-Default use wPi Pin
+Default use wPi Pin [Wiki](https://github.com/spring-z/php-raspberry-pi/wiki)
     
 ### Examples
 
