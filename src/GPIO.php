@@ -147,5 +147,16 @@ class GPIO
 
     }
 
+    /**
+     * pullUpDnControl
+     * @param int $pin
+     * @param int $pub
+     * @return int
+     */
+    public function pullUpDnControl($pin, $pub)
+    {
+        return Shell::GPIO($this->rootUser, $this->rootPassword, $this->initSetup, 'pullUpDnControl', $pin, $pub);
+    }
+
 
 }
