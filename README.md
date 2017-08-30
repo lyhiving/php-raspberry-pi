@@ -58,6 +58,6 @@ use \Pi\GPIO;
 
 // pinMode
 $gpio = new GPIO();
-$gpio->setRootUser('root', 'mypi');
+$gpio->setRootUser('pi', 'raspberry');
 var_dump($gpio->pinMode(0,GPIO::OUTPUT));
 ```
