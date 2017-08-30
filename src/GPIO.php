@@ -97,5 +97,21 @@ class GPIO
         return $aryReturn == 1 ? true : false;
     }
 
+    /**
+     *
+     * digitalWrite:
+     * Set an output bit
+     *
+     * @param $pin
+     * @param $value
+     * @return bool
+     */
+    public function digitalWrite($pin, $value)
+    {
+        $aryReturn = Shell::GPIO($this->rootUser, $this->rootPassword, $this->initSetup, 'digitalWrite', $pin, $value);
+
+        return $aryReturn == 1 ? true : false;
+    }
+
 
 }
