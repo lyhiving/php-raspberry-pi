@@ -28,9 +28,9 @@ class Shell
      *
      * @return mixed
      */
-    public static function GPIO($user, $pass, $setup, $pin, $value)
+    public static function GPIO($user, $pass, $setup, $intention, $pin, $value)
     {
-        $path = dirname(dirname(__FILE__)) . "/shell/gpio.sh";
+        $path = dirname(dirname(__FILE__)) . "/shell/GPIO.sh";
 
         $shell = shell_exec("/usr/bin/env bash " . "$path $user $pass $setup $pin $value");
 

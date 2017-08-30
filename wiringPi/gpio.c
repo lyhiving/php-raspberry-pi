@@ -167,7 +167,7 @@ int main(int argc, char *argv[]) {
 
     printf("<");
 
-    if (argc < 2) {
+    if (argc < 3) {
         echo("FAIL", -1, "Enter a valid integer.");
         return 0;
     }

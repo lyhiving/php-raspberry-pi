@@ -92,7 +92,7 @@ class GPIO
      */
     public function pinMode($pin, $mode)
     {
-        $aryReturn = Shell::GPIO($this->rootUser, $this->rootPassword, $this->initSetup, $pin, $mode);
+        $aryReturn = Shell::GPIO($this->rootUser, $this->rootPassword, $this->initSetup, 'pinMode', $pin, $mode);
 
         return $aryReturn == 1 ? true : false;
     }
