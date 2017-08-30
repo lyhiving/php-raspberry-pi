@@ -20,39 +20,10 @@ First check that wiringPi is not already installed. In a terminal, run:
 
     $ gpio -v
 
-If you get something, then you have it already installed. The next step is to work out if it’s installed via a standard package or from source. If you installed it from source, then you know what you’re doing – carry on – but if it’s installed as a package, you will need to remove the package first. To do this:
+If you get something, then you have it already installed. 
 
-    $ sudo apt-get purge wiringpi
-    $ hash -r
+If you not install. open [here](http://wiringpi.com/download-and-install/)
 
-Then carry on.
-
-If you do not have GIT installed, then under any of the Debian releases (e.g. Raspbian), you can install it with:
-
-    $ sudo apt-get install git-core
-
-If you get any errors here, make sure your Pi is up to date with the latest versions of Raspbian: (this is a good idea to do regularly, anyway)
-
-    $ sudo apt-get update
-    $ sudo apt-get upgrade
-
-To obtain WiringPi using GIT:
-
-    $ cd
-    $ git clone git://git.drogon.net/wiringPi
-
-If you have already used the clone operation for the first time, then
-
-    $ cd ~/wiringPi
-    $ git pull origin
-
-Will fetch an updated version then you can re-run the build script below.
-
-To build/install there is a new simplified script:
-
-    $ cd ~/wiringPi
-    $ ./build
-    
 ### Start
 
 run:
