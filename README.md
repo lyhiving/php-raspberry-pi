@@ -99,4 +99,7 @@ use \Pi\GPIO;
 $gpio = new GPIO();
 $gpio->setRootUser('pi', 'raspberry');
 var_dump($gpio->pinMode(0,GPIO::OUTPUT));
+
+// digitalWrite
+var_dump($gpio->digitalWrite(0,GPIO::HIGH));
 ```
