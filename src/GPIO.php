@@ -51,8 +51,6 @@ class GPIO
      *
      * wiringPiSetup
      * wiringPiSetupGpio
-     * wiringPiSetupPhys
-     * wiringPiSetupSys
      *
      * @var string
      */
@@ -62,8 +60,8 @@ class GPIO
     /**
      * set root
      *
-     * @param $user
-     * @param $pass
+     * @param string $user
+     * @param string $pass
      */
     public function setRootUser($user, $pass)
     {
@@ -73,7 +71,8 @@ class GPIO
 
     /**
      * set setup
-     * @param $setup
+     *
+     * @param string $setup
      */
     public function setSetup($setup)
     {
@@ -82,12 +81,11 @@ class GPIO
 
 
     /**
-     *
      * pinMode:
-     * Sets the mode of a pin to be input, output or PWM output
+     * Sets the mode of a pin to be INPUT or OUTPUT
      *
-     * @param $pin
-     * @param $mode
+     * @param int $pin
+     * @param int $mode
      * @return bool
      */
     public function pinMode($pin, $mode)
@@ -98,19 +96,55 @@ class GPIO
     }
 
     /**
+     * getPinMode :
+     * Gets the mode of a pin to be INPUT or OUTPUT
      *
+     * @param int $pin
+     * @return int 0: INPUT 1: OUTPUT -1:NO Mode -2: Identify errors
+     */
+    public function getPinMode($pin)
+    {
+
+    }
+
+
+    /**
+     * like run gpio readall
+     *
+     * @return array
+     */
+    public function readAll()
+    {
+
+    }
+
+    /**
      * digitalWrite:
-     * Set an output bit
+     * Set pin HIGI or LOW
      *
-     * @param $pin
-     * @param $value
-     * @return bool
+     * @param int $pin
+     * @param int $value
+     * @return int
      */
     public function digitalWrite($pin, $value)
     {
         $aryReturn = Shell::GPIO($this->rootUser, $this->rootPassword, $this->initSetup, 'digitalWrite', $pin, $value);
 
         return $aryReturn == 1 ? true : false;
+    }
+
+    /**
+     * digitalRead:
+     * Get pin HIGI or LOW
+     *
+     * @param int $pin
+     * @return int HIGI or LOW
+     */
+    public function digitalRead($pin)
+    {
+
+        return Shell::GPIO($this->rootUser, $this->rootPassword, $this->initSetup, 'digitalRead', $pin, 0);
+
     }
 
 
