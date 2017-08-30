@@ -13,5 +13,5 @@ use \Pi\GPIO;
 
 $gpio = new Pi\GPIO();
 $gpio->setRoot('root', 'mypi');
-$gpio->pinMode(0,GPIO::OUTPUT);
+var_dump($gpio->pinMode(0,GPIO::OUTPUT));
 
