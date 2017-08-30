@@ -88,7 +88,7 @@ example :
 
 Default use wPi Pin
     
-### Quick Start and Examples
+### Examples
 
 More examples are available under /examples
 
