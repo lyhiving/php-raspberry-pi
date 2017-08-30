@@ -20,6 +20,6 @@ var_dump($gpio->digitalWrite(0,GPIO::HIGH));
 // digitalRead
 $ary = $gpio->digitalRead(0);
 
-if ($ary == GPIO::HIGH || GPIO::LOW){
-    echo "";
+if ($ary == GPIO::HIGH || $ary == GPIO::LOW){
+    var_dump($ary);
 }
