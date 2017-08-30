@@ -1,19 +1,19 @@
 {
-    "name": "spring-z/php-raspberry-pi",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "spring-z",
-            "email": "zhangwenchao001@gmail.com"
-        }
-    ],
-    "require": {
-
-    },
-
-    "autoload": {
-        "psr-4": {
-            "Pi\\": "src/"
-        }
+  "name": "spring-z/php-raspberry-pi",
+  "license": "Apache-2.0",
+  "keywords": ["php", "raspberry pi", "tools", "wiringPi"],
+  "authors": [
+    {
+      "name": "spring-z",
+      "email": "zhangwenchao001@gmail.com"
     }
+  ],
+  "require": {
+    "php": ">=5.5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Pi\\": "src/"
+    }
+  }
 }
