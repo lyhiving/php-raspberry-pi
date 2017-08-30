@@ -2,6 +2,10 @@
 
 PHP www-data user run root command
 
+### Read Wiki
+
+[Wiki](https://github.com/spring-z/php-raspberry-pi/wiki) 
+
 ### Installation
 
 To install simply:
