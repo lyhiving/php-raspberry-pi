@@ -158,7 +158,7 @@ int pullUpDnControlP(char *charPin, char *charPud) {
  * print msg
  */
 void echo(char *msg, int out, char *error) {
-    printf("{\"status\": %s,\"result\": %d,\"error\": \"%s\"}", msg, out, error);
+    printf("{\"status\": \"%s\",\"result\": %d,\"error\": \"%s\"}", msg, out, error);
     printf(">");
 }
 

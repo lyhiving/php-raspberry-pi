@@ -37,14 +37,14 @@ class GPIO
      *
      * @var string
      */
-    protected $rootUser = "root";
+    protected $rootUser = "pi";
 
     /**
      * root user password
      *
      * @var string
      */
-    protected $rootPassword = "pass";
+    protected $rootPassword = "raspberry";
 
     /**
      * Setup type
@@ -65,7 +65,7 @@ class GPIO
      * @param $user
      * @param $pass
      */
-    public function setRoot($user, $pass)
+    public function setRootUser($user, $pass)
     {
         $this->rootUser = $user;
         $this->rootPassword = $pass;
