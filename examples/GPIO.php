@@ -12,5 +12,5 @@ use \Pi\GPIO;
 // pinMode
 $gpio = new GPIO();
 $gpio->setRootUser('root', 'mypi');
-$gpio->pinMode(0,GPIO::OUTPUT);
+var_dump($gpio->pinMode(0,GPIO::OUTPUT));
 
